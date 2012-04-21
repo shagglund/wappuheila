@@ -1,0 +1,2 @@
+To run the project you'll need to setup a private_settings.py file in the same folder as the settings.py resides in.
+An example is provided for sqlite3.db in the private_settings_sample.py file
