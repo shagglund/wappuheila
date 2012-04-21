@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Rekisteröinti" %}
+{% endblock %}
+
+{% block head_content %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}auth.css" />
+{% endblock %}
+
+
+{% block base_content %}
+<div class="container">
+<h2>
+{% trans "Annappa vähän henkilötietoja" %}
+</h2>
+<form action="{% url 'register' %}" method="POST">
+	{% csrf_token %}
+    <table>
+	    {% if form.first_name.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.first_name.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.first_name.label}} </th>
+	        <td> {{ form.first_name }}</td>
+	    </tr>
+	    {% if form.last_name.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.last_name.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.last_name.label}} </th>
+	        <td> {{ form.last_name }}</td>
+	    </tr>
+	    {% if form.username.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.username.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.username.label}} </th>
+	        <td> {{ form.username }}</td>
+	    </tr>
+	    {% if form.email.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.email.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.email.label}} </th>
+	        <td> {{ form.email }}</td>
+	    </tr>
+	    {% if form.password1.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.password1.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.password1.label}} </th>
+	        <td> {{ form.password1 }}</td>
+	    </tr>
+	    {% if form.password2.errors %}
+	    <tr>
+	        <td></td>
+	        <td>{{ form.password2.errors }}</td>
+	    </tr>
+	    {% endif %}
+	    <tr>
+	        <th> {{form.password2.label}} </th>
+	        <td> {{ form.password2 }}</td>
+	    </tr>
+    </table>
+    <input type="hidden" name="next" value="{{next}}" />
+	<ul class="login">
+		<li>
+			<input class="padded_button" type="submit" value="{% trans 'Rekistöröidy' %}" />
+		</li>
+		<li>
+			{% include 'auth_begin.html' with name='facebook' %}
+		</li>
+		<li>
+			{% include 'auth_begin.html' with name='google-oauth2' %}
+		</li>
+	</ul>
+</form>
+</div>
+{% endblock %}

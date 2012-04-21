@@ -1,0 +1,47 @@
+{% extends "wappuheila_base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block base_content %}
+
+{% for result, wappuheila in results %}
+	{% if forloop.first %}
+	<div class="message container line_border">
+	{% if sent_message %}
+		<p>{% trans "Wappuheilalle jättämäsi viesti:" %} {{sent_message.message|capfirst}}</p>
+	{% else %}
+		{% if user.is_authenticated and user.is_active %}
+		<p>{% trans "Jätä viesti parhaiten sopineelle wappuheilalle ja paranna parhaan Wappusi mahdollisuuksia!" %}</p>
+		<form method="POST" action="{% url 'leave_message' wappuheila.id%}">
+			{% csrf_token %}
+			<ul>
+			<li><span>{% trans "Viesti:" %}</span></li>
+			<li><textarea rows="2" name="message" ></textarea></li>
+			<li><input class="padded_button line_border" type="submit" value="{% trans "Jätä viesti" %}" /></li>
+			</ul>
+		</form>
+		{% endif %}
+	{% endif %}
+	</div>
+	{% endif %}
+	<table class="container line_border result result_{{forloop.counter}}">
+		<caption>{{forloop.counter}}</caption>
+		<tr>
+			<td rowspan="3">
+				<img class="picture" src="{{wappuheila.get_picture_url}}" alt="{{wappuheila.user.first_name}} {% trans 'kuva' %}"/>
+			</td>
+			<td colspan="2">
+				<a href="{% url 'wappuheila_details' wappuheila.id %}"><h2>{{wappuheila.user.first_name}}</h2></a>
+			</td>
+		</tr>
+		<tr>
+			<th>{% trans "Samoja vastauksia" %}</th>
+			<td>{{result}}%</td>
+		</tr>
+	</table>
+{% empty %}
+	<div class="no_results">
+		{% trans "Ohhoh, valitettavasti yhtään wappuheilaa johon vastauksiasi verrata ei kohtalon arpakoneesta löytynyt." %}
+	</div>	
+{% endfor %}
+{% endblock %}

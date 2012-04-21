@@ -1,0 +1,34 @@
+{% extends "wappuheila_base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block base_content %}
+{% if user.answer %}
+	<div class="container old_results">
+		<p>{% trans "Olet jo vastannut kilpailuun, mutta voit toki tarkastella aiempaa vastaustasi ennen katoamistasi Wapun rientoihin." %}</p>
+		<a class="padded_button" href="{% url "questions_results" %}">{% trans "Tarkastele edellistä tulostasi tästä" %}</a>
+	</div>
+{% else %}
+	{% if formset.total_form_count > 0 %}
+	<form class="question" method="POST" action="{% url "questions"%}">
+			{% csrf_token %}
+			{{formset.management_form}}
+			{% for form in formset %}
+			<div class="question container">
+	        	{{ form.id }}
+	        	{% if form.errors %}
+	        	<div class="error">{{form.errors}}</div>
+	        	{% endif %}
+				<div class="title"> {{form.instance.title}}</div>
+				<div class="options">{{form.choices}}</div>
+	       	</div>
+			{% endfor %}
+			<input class="padded_button" type="submit" value="{% trans 'Vastaa' %}" />
+	</form>
+	{% else %}
+	<div class="no_questions container">
+		<p>{% trans "Ohhoh, nyt käydään niin kuumana että jopa kilpailukysymykset pomppii taivaan tuuliin. Kannattanee kokeilla uudelleen josko joku olisi jäähdytellyt uusien kysymysten merkeissä." %}</p>
+	</div>
+	{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "wappuheila_base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+
+{% block base_content %}
+<div class="container line_border wappuheila_details">
+	<div class="wappuheila">
+		<img class="picture" src="{{wappuheila.get_picture_url}}" alt="{{wappuheila.user.first_name}} {% trans 'kuva' %}"/>
+		<h2>{{wappuheila.user.first_name}}</h2>
+		<p>{{wappuheila.punch_line}}
+		<div class="float_clear" ></div>
+	</div>
+	<table>
+		<tr>
+			<th>{% trans "Kuvaile itseäsi kolmella substantiivilla" %}</th>
+		</tr>
+		<tr>
+			<td>{{wappuheila.substantives}}</td>
+		</tr>
+		<tr>
+			<th>{% trans "Kerro vitsi" %}</th>
+		</tr>
+		<tr>
+			<td>{{wappuheila.joke}}</td>
+		</tr>
+		<tr>
+			<th>{% trans "Jos mä oisin sä niin sä oisit..." %}</th>
+		</tr>
+		<tr>
+			<td>{{wappuheila.if_i_were_you}}</td>
+		</tr>
+		<tr>
+			<th>{% trans "Wappuheilaani mieluiten..." %}</th>
+		</tr>
+		<tr>
+			<td>{{wappuheila.most_preferably}}</td>
+		</tr>
+	</table>
+</div>
+{% endblock %}

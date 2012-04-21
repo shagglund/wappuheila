@@ -1,0 +1,12 @@
+.login{
+	width:15em;
+}
+table{
+	width:25em;
+}
+th{
+	text-align: left;
+}
+ul.login input, ul.login img{
+	vertical-align: middle;
+}

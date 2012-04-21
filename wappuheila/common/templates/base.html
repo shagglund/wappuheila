@@ -1,0 +1,120 @@
+{% load url from future %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="A joyful site for finding the perfect Wappuheila" />
+<meta name="author" content="BY" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}base.css" />
+<title>{% block title %}Wappuheila.com{% endblock %}</title>
+
+{% block facebook_head %}
+<meta property="og:title" content="Wappuheila" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.wappuheila.com" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Wappuheila.com" />
+<meta property="fb:admins" content="100001009127458" />
+{% endblock %}
+
+{% block head_content %}
+{% endblock %}
+
+<script type="text/javascript">
+function refresh_background(){
+	var obj = document.getElementsByTagName('html')[0];
+	obj.style. = "background";
+}
+</script>
+</head>
+<body onLoad="refresh_background();">
+<div id="fb-root"></div>
+<script>
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/fi_FI/all.js#xfbml=1&appId=192327824144818";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	!function(d,s,id){
+		var js,fjs=d.getElementsByTagName(s)[0];
+		if(!d.getElementById(id)){
+			js=d.createElement(s);
+			js.id=id;
+			js.src="//platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js,fjs);
+		}
+	}(document,"script","twitter-wjs");
+</script>
+{% block top_navigation %}
+<ul class="top-nav">
+	<li>
+		<a href="https://twitter.com/share" class="twitter-share-button"
+		data-url="http://www.wappuheila.com" data-lang="fi" data-count="none">Twiittaa</a>
+	</li>
+	<li>
+		<div class="fb-like" data-send="false" data-href="http://www.wappuheila.com" data-layout="button_count" 
+		data-width="80" data-show-faces="false" data-font="verdana"></div>
+	</li>
+	<li>
+		<div class="fb-send" data-href="http://www.wappuheila.com" data-font="verdana"></div>
+	</li>
+	{% if user.is_authenticated %}	
+	<li>
+		<a href="{% url 'user_control_panel' %}">{% trans "Omat tiedot" %}</a>
+	</li>
+	<li>
+		<a href="{% url 'logout' %}">{% trans "Kirjaudu ulos" %}</a>
+	</li>
+	{% else %}
+	<li>
+		<a href="{% url 'register' %}">{% trans "Rekisteröidy" %}</a>
+	</li>
+	<li>
+		<a href="{% url 'login' %}">{% trans "Kirjaudu sisään" %}</a>
+	</li>
+	{% endif %}
+</ul>
+{% endblock %}
+
+{% block logo %}
+<div class="logo">
+	<img src="{{STATIC_URL}}wh_logo.png" alt="Wappuheila logo" />
+</div>
+{% endblock %}
+
+
+<div class="content">
+{% block navigation %}
+<div class="nav">
+	<ul>
+		<li><a class="padded_button" href="{% url "home" %}">{% trans "Wappuheila 2012" %}</a></li>
+		<li><a class="padded_button" href="{% url "wappuheilas" %}">{% trans "Wappuheilat" %}</a></li>
+		<li><a class="padded_button" href="{% url "questions" %}">{% trans "Kilpailu" %}</a></li>
+	</ul>
+</div>
+{% endblock %}
+
+{% block messages_content %}
+{% if messages %}
+<div class="container">
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+</div>
+{% endif %}
+{% endblock %}
+	
+{% block base_content %}
+<div class="container">
+INTRODUCTION TODO
+</div>
+{% endblock %}
+
+</div>
+</body>
+</html>

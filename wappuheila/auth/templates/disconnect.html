@@ -1,0 +1,8 @@
+{% load filters %}
+{% load i18n %}
+
+<a class="social_disconnect" href="{% url socialauth_disconnect name %}">
+	<img width="25px" src="{{name|to_social_logo_url}}" alt="{{name}}" />
+	{% trans "Poista" %}
+</a>
+			

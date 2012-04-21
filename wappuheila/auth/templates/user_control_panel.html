@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+
+{% block head_content %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}auth.css" />
+{% endblock %}
+
+{% block base_content %}
+<div class="user_control_panel container">
+	<form method="POST" action="{% url 'user_control_panel' %}">
+		{% csrf_token %}
+		<table>
+			{{userdetails_form.as_table}}
+		</table>
+		<input class="padded_button" type="submit" value="{% trans "Tallenna muutokset" %}" />
+	</form>
+</div>
+<div class="social_providers container">
+	<ul>
+		<h2>{% trans "Liitettävät höpötyspalvelut" %}</h2>
+		{% for instance in social_auth.associated %}
+			{% with name=instance.provider %}
+				{% if name == "facebook" or name == "google-oauth2" %}
+				<li class="linked">
+					{% include 'disconnect.html' with name=name %}
+				</li>
+				{% endif %}
+			{% endwith %}
+		{% endfor %}
+		{% for name in social_auth.not_associated %}
+			{% if name == "facebook" or name == "google-oauth2" %}
+			<li class="linkable">
+				{% include 'associate.html' with name=name %}
+			</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

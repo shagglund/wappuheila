@@ -1,0 +1,143 @@
+
+/***** QUESTIONNAIRE STYLES *****/
+div.message li{
+	vertical-align: middle;
+}
+div.message span{
+	font-size:1em;
+	font-weight: bold;
+}
+div.message textarea{
+	vertical-align: inherit;
+}
+.question li:hover{
+	color:#FFE87C;
+}
+
+div.question {
+	padding:0.2em;
+	border-radius: 0.5em;
+	margin-bottom: 0.5em;
+	opacity:0.8;
+}
+
+.title {
+	padding:0.5em;
+	border-radius:0.5em;
+	color:white;
+	background-image: linear-gradient(bottom, rgb(240,57,161) 0%, rgb(120,48,138) 100%);
+background-image: -o-linear-gradient(bottom, rgb(240,57,161) 0%, rgb(120,48,138) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(240,57,161) 0%, rgb(120,48,138) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(240,57,161) 0%, rgb(120,48,138) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(240,57,161) 0%, rgb(120,48,138) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(240,57,161)),
+	color-stop(1, rgb(120,48,138))
+);
+}
+
+div.options{
+	padding:0.2em;
+}
+
+div.options ul{
+	margin:0em;
+	padding-left:1em;
+}
+
+div.options li{
+	margin:0.3em;
+	padding:0.2em 0.1em 0.2em 0.5em;
+	border-radius:0.5em;
+	color:white;
+	display:block;
+}
+
+div.options li:nth-child(even){
+	background-image: linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
+background-image: -o-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(240,57,213)),
+	color-stop(1, rgb(138,48,107))
+);
+}
+
+div.options li:nth-child(odd) {
+background-image: linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
+background-image: -o-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(152,57,240)),
+	color-stop(1, rgb(138,48,132))
+);
+
+}
+
+.question input[type='submit']{
+	font-size: 1em;
+}
+
+.result{
+	text-align: left;
+	width:30em;
+	margin:1em auto;
+}
+.result td{
+	margin:0em 0.5em;
+}
+
+.result h2{
+	margin:0.2em 0em 0.8em 0em;
+}
+.result caption{
+	position:absolute;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+/***** WAPPUHEILA STYLES *****/
+.wappuheila{
+	width:48%;
+	margin:1%;
+	border-radius:0.5em;	
+}
+.wappuheila img.picture{
+	float:left;
+}
+.wappuheila p{
+	font-style: italic;
+}
+
+a.name{
+	font-size:1.3em;
+	text-decoration: none;
+}
+
+.wappuheila_details{
+	margin:1em 3em 3em 3em;
+	padding: 0em 1em 1em 1em;
+}
+.wappuheila_details table{
+	width:60%;
+}
+
+.wappuheila_details th{
+	text-align: left;
+}

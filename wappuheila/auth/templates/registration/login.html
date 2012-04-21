@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load filters %}
+
+{% block head_content %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}auth.css" />
+{% endblock %}
+
+{% block base_content %}
+<div class="container">
+
+{% if form.errors %}
+<p>{% trans "Salasana ja käyttäjä eivät täsmää. Halutessasi kokeile uudestaan." %}</p>
+{% endif %}
+
+<form method="POST" action="{% url 'django.contrib.auth.views.login' %}">
+{% csrf_token %}
+<table class="login">
+<tr>
+    <td>{% trans "Käyttäjänimi" %}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{% trans "Salasana" %}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<ul class="login">
+	<li>
+		<input class="padded_button" type="submit" value="{% trans 'Kirjaudu sisään' %}" />
+	</li>
+	<li>
+		{% include 'auth_begin.html' with name='facebook' %}
+	</li>
+	<li>
+		{% include 'auth_begin.html' with name='google-oauth2' %}
+	</li>
+</ul>
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+{% endblock %}

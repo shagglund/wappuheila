@@ -1,0 +1,28 @@
+{% extends "wappuheila_base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+
+{% block base_content %}
+<table>
+	<tr>
+		{% for wappuheila in wappuheilas %}
+		<td class="wappuheila container line_border">
+			<img class="picture" src="{{wappuheila.get_picture_url}}" alt="{{wappuheila.user.first_name}} {% trans 'kuva' %}"/>
+			<a class="name" href="{{wappuheila.get_absolute_url}}">{{wappuheila.user.first_name}}</a>
+			<p>{{wappuheila.punch_line}}
+			<div class="float_clear" ></div>
+		</td>
+		{% if forloop.counter|divisibleby:"2" and not forloop.last %}
+		</tr><tr>
+		{% endif %}
+		{% empty %}
+		<td class="no_wappuheilas container">
+			<p>
+			{% trans "Ohhoh, näemmä kaikki heilat ovat mystisesti kadonneet. Kokeileppa uudestaan myöhemmin josko joku olisi pamahtanut paikalle! ;)" %}
+			</p>
+		</td>
+		{% endfor %}
+	</tr>
+</table>
+{% endblock %}

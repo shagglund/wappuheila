@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% block title %}
+{{title}}
+{% endblock %}
+{% block base_content %}
+    <div class="container">
+        <p>{% trans "Kirjautuminen ulos onnistui." %}</p>
+        <a class="padded_button" href="{% url 'home' %}">{% trans "Takaisin lähtöruutuun." %}</a>
+    </div>
+{% endblock %}
