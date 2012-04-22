@@ -122,15 +122,18 @@ def show_messages(request):
     return render_to_request_context_response(request, 'messages.html', {'messages':messages});
         
 @login_required
-def register_as_wappuheila(request):
+def wappuheila_self_admin(request):
     if request.method == 'POST' and request.POST.get('common_pw') == WPH_REGISTER_PASSWORD:
-            wappuheila_form = WappuheilaForm(request.POST)
-            if wappuheila_form.is_valid():
-                wappuheila = wappuheila_form.save(commit=False)
-                wappuheila.user = request.user
-                wappuheila.save()
-                return render_to_request_context_response(request, 'wappuheila_register_success.html')
+        wappuheila, created = Wappuheila.objects.get_or_create(user=request.user)
+        wappuheila_form = WappuheilaForm(request.POST, instance=wappuheila)
+        if wappuheila_form.is_valid():
+            wappuheila_form.save()
+            return render_to_request_context_response(request, 'wappuheila_changed_or_created.html', {'new_wappuheila' : created})
     else:
-        wappuheila_form = WappuheilaForm()
+        try:
+            wappuheila = Wappuheila.objects.get(user=request.user)
+            wappuheila_form = WappuheilaForm(instance=wappuheila)
+        except Wappuheila.DoesNotExist:
+            wappuheila_form = WappuheilaForm()
     return render_to_request_context_response(request, 'register_as_wappuheila.html', {'wappuheila_form':wappuheila_form})
     

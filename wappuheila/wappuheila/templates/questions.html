@@ -25,11 +25,16 @@
 	<form class="question" method="POST" action="{% url "questions"%}">
 			{% csrf_token %}
 			{{formset.management_form}}
+			{% if formset.errors %}
+				<div class="container error">
+	            {% trans "Et vastannut kaikkiin kysymyksiin, kokeileppa uudelleen." %}
+				</div>
+            {% endif %}
 			{% for form in formset %}
 			<div class="question container">
 	        	{{ form.id }}
 	        	{% if form.errors %}
-	        	<div class="error">{{form.errors}}</div>
+	        	<div class="error">{% trans "Vastaappa tähänkin kysymykseen" %}</div>
 	        	{% endif %}
 				<div class="title"> {{form.instance.title}}</div>
 				<div class="options">{{form.choices}}</div>

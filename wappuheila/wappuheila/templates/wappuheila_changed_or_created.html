@@ -3,7 +3,11 @@
 
 {% block base_content %}
 <div class="container">
+    {% if new_wappuheila %}
     <p>{% trans "Rekisteröintisi wappuheilaksi onnistui!" %}</p>
+    {% else %}
+    <p>{% trans "Tietojesi muuttaminen onnistui!" %}</p>
+    {% endif %}
 </div>
 {% endblock %}
    

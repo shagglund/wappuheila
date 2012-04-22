@@ -8,8 +8,8 @@ from wappuheila import settings
 
 class Wappuheila(models.Model):
     user = models.OneToOneField(User)
-    pic_url = models.URLField(blank=True, null=True)
-    intro = models.TextField(max_length=2048, verbose_name=ugettext_lazy(u'Esittely'))
+    pic_url = models.URLField(blank=True, null=True, verbose_name=ugettext_lazy(u'Kuvan url'))
+    intro = models.TextField(max_length=2048, verbose_name=ugettext_lazy(u'Itsesi kuvaus tai esittely'))
     substantives = models.CharField(max_length=128, verbose_name=ugettext_lazy(u'Kuvaile itseäsi kolmella substantiivilla'))
     joke = models.TextField(max_length=2048, verbose_name=ugettext_lazy(u'Kerro vitsi'))
     if_i_were_you = models.CharField(max_length=128, verbose_name=ugettext_lazy(u'Jos mä oisin sä niin sä oisit...'))
