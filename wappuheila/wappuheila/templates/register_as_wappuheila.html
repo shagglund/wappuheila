@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block head_content %}
+<style>
+input{
+width:40em;
+}
+textarea{
+width:40em;
+}
+</style>
+{% endblock %}   
+{% block base_content %}
+<form action="{% url register_as_wappuheila %}" method="POST">
+{% csrf_token %}
+   
+    <table>
+    {{wappuheila_form.as_table}}
+    <th>
+        SUPERSALASANA:
+    </th>
+    <td>
+        <input type="password" name="common_pw" />
+    </td>
+    </table>
+    <input class="padded_button" type="submit" value="{% trans "Rekisteröidy" %}" />
+</form>
+{% endblock %}

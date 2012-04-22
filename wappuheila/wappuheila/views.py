@@ -8,20 +8,21 @@ from django.http import Http404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from wappuheila.common.utils import render_to_request_context_response
-from wappuheila.wappuheila.models import Wappuheila, Question, Answer,\
+from wappuheila.wappuheila.models import Wappuheila, Question, Answer, \
     QuestionOption, Message
-from wappuheila.wappuheila.forms import AnswerForm
+from wappuheila.wappuheila.forms import AnswerForm, WappuheilaForm
+from wappuheila.private_settings import WPH_REGISTER_PASSWORD
 
 def home(request):
-    return render_to_request_context_response(request, "main_page.html",{"user" : request.user})
+    return render_to_request_context_response(request, "main_page.html", {"user" : request.user})
 
-def wappuheila(request, wph_id = None):
+def wappuheila(request, wph_id=None):
     if wph_id is not None:
         wappuheila = get_object_or_404(Wappuheila, id=wph_id)
-        return render_to_request_context_response(request,"wappuheila_details.html", {"wappuheila" : wappuheila})
+        return render_to_request_context_response(request, "wappuheila_details.html", {"wappuheila" : wappuheila})
     
     wappuheilas = Wappuheila.objects.all()
-    return render_to_request_context_response(request,"wappuheilas.html", {"wappuheilas" : wappuheilas})
+    return render_to_request_context_response(request, "wappuheilas.html", {"wappuheilas" : wappuheilas})
 
 
 def questions(request):
@@ -42,7 +43,7 @@ def questions(request):
         try:
             Answer.objects.get(user=request.user)
             #render without the questions
-            return render_to_request_context_response(request,"questions.html")
+            return render_to_request_context_response(request, "questions.html")
         except Answer.DoesNotExist:
             pass
     
@@ -59,26 +60,26 @@ def questions(request):
                 add_choices_to_answer(formset, answer)
                 return results(request, answer)
             else:
-                answer,created = Answer.objects.get_or_create(user=request.user)
+                answer, created = Answer.objects.get_or_create(user=request.user)
                 if not created:
                     answer.choices.clear()
                 add_choices_to_answer(formset, answer)
-                return redirect_to(request,reverse('questions_results'),False)   
+                return redirect_to(request, reverse('questions_results'), False)   
     
     else:
         formset = QuestionAnswerFormSet()
         
     #The questions should be rendered
-    return render_to_request_context_response(request,"questions.html", {"formset": formset, })
+    return render_to_request_context_response(request, "questions.html", {"formset": formset, })
 
-def results(request, answer = None):
+def results(request, answer=None):
     if answer is None:
-            answer = get_object_or_404(Answer, user = request.user)
+            answer = get_object_or_404(Answer, user=request.user)
     
     #calculate the percentage of same answers compared to each wappuheilas answers
     results = []
     for wappuheila in Wappuheila.objects.all():
-        wph_answer = Answer.objects.get(user = wappuheila.user)
+        wph_answer = Answer.objects.get(user=wappuheila.user)
         same_answers = QuestionOption.objects.filter(id__in=wph_answer.choices.all()).filter(id__in=answer.choices.all()).distinct().count()
         percentage = float(same_answers) / wph_answer.choices.all().count() * 100
         results.append((percentage, wappuheila))
@@ -93,7 +94,7 @@ def results(request, answer = None):
         answer.delete()
     else:
         try:
-            rcontext['sent_message'] = Message.objects.get(sender = request.user)
+            rcontext['sent_message'] = Message.objects.get(sender=request.user)
         except Message.DoesNotExist:
             pass;
         
@@ -117,10 +118,19 @@ def leave_message(request, wph_id):
 @login_required
 @require_GET
 def show_messages(request):
-    messages = Message.objects.filter(Q(sender = request.user) | Q(receiver = request.user))
+    messages = Message.objects.filter(Q(sender=request.user) | Q(receiver=request.user))
     return render_to_request_context_response(request, 'messages.html', {'messages':messages});
         
-    
-    
-    
+@login_required
+def register_as_wappuheila(request):
+    if request.method == 'POST' and request.POST.get('common_pw') == WPH_REGISTER_PASSWORD:
+            wappuheila_form = WappuheilaForm(request.POST)
+            if wappuheila_form.is_valid():
+                wappuheila = wappuheila_form.save(commit=False)
+                wappuheila.user = request.user
+                wappuheila.save()
+                return render_to_request_context_response(request, 'wappuheila_register_success.html')
+    else:
+        wappuheila_form = WappuheilaForm()
+    return render_to_request_context_response(request, 'register_as_wappuheila.html', {'wappuheila_form':wappuheila_form})
     

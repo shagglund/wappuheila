@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^questions/$', views.questions, name='questions'),
     url(r'^questions/results/$', views.results, name='questions_results'),
     url(r'^leave_message/(?P<wph_id>\d+)$', views.leave_message, name='leave_message'),
+    url(r'^register_as_wappuheila/$', views.register_as_wappuheila, name='register_as_wappuheila'),
 )

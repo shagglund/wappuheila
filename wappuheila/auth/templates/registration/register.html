@@ -80,18 +80,17 @@
 	        <td> {{ form.password2 }}</td>
 	    </tr>
     </table>
+    <input class="padded_button" type="submit" value="{% trans 'Rekistöröidy' %}" />
     <input type="hidden" name="next" value="{{next}}" />
-	<ul class="login">
-		<li>
-			<input class="padded_button" type="submit" value="{% trans 'Rekistöröidy' %}" />
-		</li>
-		<li>
-			{% include 'auth_begin.html' with name='facebook' %}
-		</li>
-		<li>
-			{% include 'auth_begin.html' with name='google-oauth2' %}
-		</li>
-	</ul>
 </form>
+<h4>{% trans "Tai hyväksikäytä sosiaalista mediaa" %}</h4>
+<ul class="login">
+    <li>
+        {% include 'auth_begin.html' with name='facebook' %}
+    </li>
+    <li>
+        {% include 'auth_begin.html' with name='google-oauth2' %}
+    </li>
+</ul>
 </div>
 {% endblock %}

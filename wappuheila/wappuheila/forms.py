@@ -1,8 +1,12 @@
 from django.forms.models import ModelForm, ModelMultipleChoiceField, \
     ModelChoiceField
-from wappuheila.wappuheila.models import Question, QuestionOption
+from wappuheila.wappuheila.models import Question, QuestionOption, Wappuheila
 from django.forms import widgets
-
+class WappuheilaForm(ModelForm):
+    class Meta:
+        model = Wappuheila
+        exclude = ('user',)
+        
 class AnswerForm(ModelForm):
     class Meta:
         model = Question

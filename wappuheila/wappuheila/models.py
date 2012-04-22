@@ -3,17 +3,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import permalink
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy
 from wappuheila import settings
 
 class Wappuheila(models.Model):
     user = models.OneToOneField(User)
     pic_url = models.URLField(blank=True, null=True)
-    intro = models.TextField(max_length=2048, verbose_name=ugettext("Esittely"))
-    substantives = models.CharField(max_length=128, verbose_name=ugettext("Kuvaile itseäsi kolmella substantiivilla"))
-    joke = models.TextField(max_length=2048, verbose_name=ugettext("Kerro vitsi"))
-    if_i_were_you = models.CharField(max_length=128, verbose_name=ugettext("Jos mä oisin sä niin sä oisit..."))
-    most_preferably = models.TextField(max_length=256, verbose_name=ugettext("Wappuheilani kanssa mieluiten..."))
+    intro = models.TextField(max_length=2048, verbose_name=ugettext_lazy(u'Esittely'))
+    substantives = models.CharField(max_length=128, verbose_name=ugettext_lazy(u'Kuvaile itseäsi kolmella substantiivilla'))
+    joke = models.TextField(max_length=2048, verbose_name=ugettext_lazy(u'Kerro vitsi'))
+    if_i_were_you = models.CharField(max_length=128, verbose_name=ugettext_lazy(u'Jos mä oisin sä niin sä oisit...'))
+    most_preferably = models.TextField(max_length=256, verbose_name=ugettext_lazy(u'Wappuheilani kanssa mieluiten...'))
     
     def __unicode__(self):
         return self.user.get_full_name()
