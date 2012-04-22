@@ -11,18 +11,25 @@ width:40em;
 </style>
 {% endblock %}   
 {% block base_content %}
-<form action="{% url register_as_wappuheila %}" method="POST">
-{% csrf_token %}
-   
-    <table>
-    {{wappuheila_form.as_table}}
-    <th>
-        SUPERSALASANA:
-    </th>
-    <td>
-        <input type="password" name="common_pw" />
-    </td>
-    </table>
-    <input class="padded_button" type="submit" value="{% trans "Rekisteröidy" %}" />
-</form>
+	{% if user.wappuheila %}
+	<div class="container">
+	    <p>{% trans "Olet jo rekisteröitynyt Wappuheilaksi. Loppuu se ylimääränen yrittäminen." %}</p>
+	</div>
+	{% else %}
+	<div class="container">
+		<form action="{% url register_as_wappuheila %}" method="POST">
+		{% csrf_token %}
+		    <table>
+		    {{wappuheila_form.as_table}}
+		    <th>
+		        SUPERSALASANA:
+		    </th>
+		    <td>
+		        <input type="password" name="common_pw" />
+		    </td>
+		    </table>
+		    <input class="padded_button" type="submit" value="{% trans "Rekisteröidy" %}" />
+		</form>
+	</div>
+	{% endif %}
 {% endblock %}

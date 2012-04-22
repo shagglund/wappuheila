@@ -40,7 +40,7 @@ GOOGLE_OAUTH2_CLIENT_SECRET = private.GOOGLE_OAUTH2_SECRET
 GOOGLE_OAUTH_EXTRA_SCOPE = []
 
 # Django settings for Wappuheila project.
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
