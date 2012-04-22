@@ -13,7 +13,7 @@ from wappuheila.wappuheila.models import Wappuheila, Question, Answer,\
 from wappuheila.wappuheila.forms import AnswerForm
 
 def home(request):
-    return render_to_request_context_response(request, "base.html",{"user" : request.user})
+    return render_to_request_context_response(request, "main_page.html",{"user" : request.user})
 
 def wappuheila(request, wph_id = None):
     if wph_id is not None:

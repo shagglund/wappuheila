@@ -55,24 +55,17 @@ html{
 	height:100%;
 	width:100%;
 	background-attachment:fixed;
-	background-image: linear-gradient(bottom, rgb(57,240,231) 0%, rgb(48,60,138) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(57,240,231) 0%, rgb(48,60,138) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(57,240,231) 0%, rgb(48,60,138) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(57,240,231) 0%, rgb(48,60,138) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(57,240,231) 0%, rgb(48,60,138) 100%);
-	
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(57,240,231)),
-		color-stop(1, rgb(48,60,138))
-	);
+	background-image: linear-gradient(bottom, rgb(48,60,138) 0%, rgb(57,190,188) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(48,60,138) 0%, rgb(57,190,188) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(48,60,138) 0%, rgb(57,190,188) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(48,60,138) 0%, rgb(57,200,188) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(48,60,138) 0%, rgb(57,190,188) 100%);
 
 }
 
 body{
 	width:45em;
+	height:100%;
 	margin:auto;
 }
 
@@ -93,6 +86,15 @@ ul{
 
 form{
 	position:relative;
+}
+
+p, td{
+	color:rgba(232,236,100,0.8);
+}
+
+h3{
+  color:rgba(232,236,110,0.9);
+  font-weight: 600;
 }
 
 a{
@@ -117,10 +119,15 @@ div.logo{
 
 div.content{
 	padding:0.5em;
-	height:100%;
 	border:0.3em outset rgba(0,0,0,0.1);
 	border-radius:1em;
 	margin:0.5em 0em;
+}
+
+p.footer{
+	font-size: 8px;
+	text-align: center;
+	width:100%;
 }
 
 /***** TOP NAV BAR STYLES *****/

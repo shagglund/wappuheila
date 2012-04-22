@@ -3,6 +3,14 @@
 {% load i18n %}
 
 {% block base_content %}
+{% if user.is_anonymous %}
+    <div class="container">
+        <p>Kilpailuun osallistuminen vaatii rekisteröitymistä. 
+        Voit toki vastata kyselyyn, tarkastella ketä toistaan timanttisemmista Wappuheiloista 
+        juuri sinulle parhaiten sopii ja käydä kiinni muin keinoin ;)</p>
+        <a class="padded_button" href="{% url 'register' %}">{% trans "Rekisteröidy tästä" %}</a>
+    </div>
+{% endif %}
 {% if user.answer %}
 	<div class="container old_results">
 		<p>{% trans "Olet jo vastannut kilpailuun, mutta voit toki tarkastella aiempaa vastaustasi ennen katoamistasi Wapun rientoihin." %}</p>
@@ -10,6 +18,10 @@
 	</div>
 {% else %}
 	{% if formset.total_form_count > 0 %}
+	<div class="container">
+	   <p>Vastaa kysymyksiin ja voita sitsit penthousen porukoilla unelmien Wappuheilan kanssa!</p>
+	   <p>Voittajille ilmoitetaan henkilökohtaisesti keinoja kaihtamatta.</p>
+	</div>
 	<form class="question" method="POST" action="{% url "questions"%}">
 			{% csrf_token %}
 			{{formset.management_form}}

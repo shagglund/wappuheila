@@ -6,7 +6,6 @@ from django.views.generic.simple import redirect_to
 from django.contrib.auth import authenticate, login
 from wappuheila.auth import forms
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import forms as auth_forms
 from wappuheila.auth.forms import ChangeUserDetailsForm
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
@@ -28,7 +27,7 @@ def user_control_panel(request):
             if userdetails_form.cleaned_data['last_name']:
                 request.user.last_name = userdetails_form.cleaned_data['last_name']
             request.user.save()
-            messages.success(request, _("Käyttäjätietojen vaihto onnistui."))
+            messages.success(request, _("Tietojen muutos onnistui."))
         
     else:
         #create an empty username form
