@@ -43,6 +43,8 @@ GOOGLE_OAUTH_EXTRA_SCOPE = []
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+SITE_ID=1
+
 ADMINS = (
     private.ADMINS
     # ('Your Name', 'your_email@example.com'),
@@ -156,6 +158,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

@@ -1,6 +1,6 @@
 /******** COMMON GENERIC STYLES ********/
 .container{
-	background-color:rgba(0, 255, 255, 0.2);
+	background-color:rgba(255, 255, 255, 0.8);
 	border-radius:0.5em;
 	padding:0.5em;
 	margin-top:0.5em;
@@ -15,23 +15,9 @@
 .padded_button{
 	text-decoration: none;
 	padding:0.3em 1em;
-	opacity:0.85;
-	color:white;
 	border-radius:0.5em;
-	background-image: linear-gradient(bottom, rgb(57,213,240) 0%, rgb(134,48,138) 54%);
-	background-image: -o-linear-gradient(bottom, rgb(57,213,240) 0%, rgb(134,48,138) 54%);
-	background-image: -moz-linear-gradient(bottom, rgb(57,213,240) 0%, rgb(134,48,138) 54%);
-	background-image: -webkit-linear-gradient(bottom, rgb(57,213,240) 0%, rgb(134,48,138) 54%);
-	background-image: -ms-linear-gradient(bottom, rgb(57,213,240) 0%, rgb(134,48,138) 54%);
-	
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(57,213,240)),
-		color-stop(0.4, rgb(134,48,138))
-	);
-	
+	border:2px solid black;
+	background-color:white;
 }
 
 .picture{
@@ -68,7 +54,9 @@ body{
 	height:100%;
 	margin:auto;
 }
-
+p, td{
+	font-family: sans-serif;
+}
 li {
 	list-style: none;
 	display:inline;
@@ -88,25 +76,17 @@ form{
 	position:relative;
 }
 
-p, td{
-	color:rgba(232,236,100,0.8);
-}
 
 h3{
-  color:rgba(232,236,110,0.9);
+	font-family:sans-serif;
   font-weight: 600;
 }
 
 a{
-	color:rgba(255,255,255,0.9);
+	color:black;
 	text-decoration: none;
 	border-radius:0.5em;
-	font-style:verdana;
-}
-
-a:hover{
-	opacity:1;
-	color:#ECE5B6;
+	font-family:sans-serif;
 }
 
 /****** SECTION SPECIFIC STYLES ******/
@@ -147,20 +127,9 @@ div.nav{
 	opacity:0.85;
 	text-align: center;
 	margin:1em 0em 2em 0em;
+	border:2px solid black;
 	border-radius:0.5em;
-	background-image: linear-gradient(bottom, rgb(240,57,219) 0%, rgb(126,48,138) 54%);
-	background-image: -o-linear-gradient(bottom, rgb(240,57,219) 0%, rgb(126,48,138) 54%);
-	background-image: -moz-linear-gradient(bottom, rgb(240,57,219) 0%, rgb(126,48,138) 54%);
-	background-image: -webkit-linear-gradient(bottom, rgb(240,57,219) 0%, rgb(126,48,138) 54%);
-	background-image: -ms-linear-gradient(bottom, rgb(240,57,219) 0%, rgb(126,48,138) 54%);
-	
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(240,57,219)),
-		color-stop(0.54, rgb(126,48,138))
-	);
+	background-color:white;
 }
 
 div.nav a{

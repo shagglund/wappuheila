@@ -18,34 +18,16 @@ div.message span{
 div.message textarea{
 	vertical-align: inherit;
 }
-.question li:hover{
-	color:#FFE87C;
-}
 
 div.question {
 	padding:0.2em;
 	border-radius: 0.5em;
 	margin-bottom: 0.5em;
-	opacity:0.8;
 }
 
 .title {
 	padding:0.5em;
 	border-radius:0.5em;
-	color:white;
-	background-image: linear-gradient(bottom, rgb(240,57,161) 20%, rgb(120,48,138) 100%);
-background-image: -o-linear-gradient(bottom, rgb(240,57,161) 20%, rgb(120,48,138) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(240,57,161) 20%, rgb(120,48,138) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(240,57,161) 20%, rgb(120,48,138) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(240,57,161) 20%, rgb(120,48,138) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.2, rgb(240,57,161)),
-	color-stop(1, rgb(120,48,138))
-);
 }
 
 div.options{
@@ -61,40 +43,13 @@ div.options li{
 	margin:0.3em;
 	padding:0.2em 0.1em 0.2em 0.5em;
 	border-radius:0.5em;
-	color:white;
 	display:block;
 }
 
 div.options li:nth-child(even){
-	background-image: linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
-background-image: -o-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(240,57,213) 0%, rgb(138,48,107) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(240,57,213)),
-	color-stop(1, rgb(138,48,107))
-);
 }
 
 div.options li:nth-child(odd) {
-background-image: linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
-background-image: -o-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(152,57,240) 0%, rgb(138,48,132) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(152,57,240)),
-	color-stop(1, rgb(138,48,132))
-);
 
 }
 
